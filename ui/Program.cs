@@ -55,6 +55,7 @@ do
         case 6:
             Tree arbol = new Tree();
             controller.RecorridoInAvl(arbol.devolverRaiz());
+            Console.ReadKey();
             break;
 
         default:
