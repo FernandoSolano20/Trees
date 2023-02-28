@@ -57,7 +57,7 @@ namespace bl.Structures.AVLRB
                             break;// se rompe 
                         }
                     }
-                    else if (id > cursor.devolverLlave())
+                    else if (id > cursor.devolverLlave())//lO MISMO DE ARRIBA SOLO QUE A LA DERECHA
                     {
                         padre = cursor;
                         cursor = cursor.devolverHijoD();
@@ -87,11 +87,11 @@ namespace bl.Structures.AVLRB
             {
                 if (z.devolverPadre() == z.devolverPadre().devolverPadre().devolverHijoI())//aqui se comprueba si es el nodo que va para la izquierda
                 {
-                    // z = arreglarIzqAbuelo(z);
+                     z = ArreglarIzqAbuelo(z);
                 }
                 else// y aqui se comprueba hacia la derecha
                 {
-                    //z =  arreglarDerAbuelo(z);
+                    z = ArreglarDerAbuelo(z);
                 }
                 if (z.devolverPadre() == null)
                 {
@@ -100,17 +100,59 @@ namespace bl.Structures.AVLRB
             }
             devolverRaiz().fijarColor("negro");// Por si se hace cambios en la raiz
         }
-        public void RotarDer(RedBlackNode x) //Son las mismas que se utilizan en los ABB
+        public void RotarDer(RedBlackNode nodo) //Son las mismas que se utilizan en los ABB
         {
-            RedBlackNode nuevoNodo = x.devolverHijoI();
-           // x.devolverHijoD() = nuevoNodo.devolverHijoI();
-           // nuevoNodo.devolverHijoI() = x;
-           // nuevoNodo.fijarColor("Rojo") = x.fijarColor("Rojo");
-
+            RedBlackNode nuevoNodoRaiz = nodo.devolverHijoI();
+            nodo.fijarHijoD(nuevoNodoRaiz.devolverHijoD());
+            if (nuevoNodoRaiz.devolverHijoI() != null)
+            {
+                nuevoNodoRaiz.devolverHijoD().fijarPadre(nodo);
+            }
+            if (nodo.devolverPadre() != null)
+            {
+                if (nodo == nodo.devolverPadre().devolverHijoD())
+                {
+                    nodo.devolverPadre().fijarHijoD(nuevoNodoRaiz);
+                }
+                else
+                {
+                    nodo.devolverPadre().fijarHijoI(nuevoNodoRaiz);
+                }
+            }
+            else
+            {
+                this.raiz = nuevoNodoRaiz;
+            }
+            nuevoNodoRaiz.fijarPadre(nodo.devolverPadre());
+            nodo.fijarPadre(nuevoNodoRaiz);
+            nuevoNodoRaiz.fijarHijoD(nodo);
         }
-        public void RotarIzq(RedBlackNode x)//Son las mismas que se utilizan en los ABB
+        public void RotarIzq(RedBlackNode nodo)//Son las mismas que se utilizan en los ABB
         {
-
+            RedBlackNode nuevoNodoRaiz = nodo.devolverHijoD();
+            nodo.fijarHijoD(nuevoNodoRaiz.devolverHijoI());
+            if (nuevoNodoRaiz.devolverHijoI() != null)
+            {
+                nuevoNodoRaiz.devolverHijoI().fijarPadre(nodo);
+            }
+            if (nodo.devolverPadre() != null)
+            {
+                if (nodo == nodo.devolverPadre().devolverHijoI())
+                {
+                    nodo.devolverPadre().fijarHijoI(nuevoNodoRaiz);
+                }
+                else
+                {
+                    nodo.devolverPadre().fijarHijoD(nuevoNodoRaiz);
+                }
+            }
+            else
+            {
+                this.raiz = nuevoNodoRaiz;
+            }
+            nuevoNodoRaiz.fijarPadre(nodo.devolverPadre());
+            nodo.fijarPadre(nuevoNodoRaiz);
+            nuevoNodoRaiz.fijarHijoI(nodo);
         }
         //Invocada por los arreglos
         public RedBlackNode ArreglarIzqAbuelo(RedBlackNode z)
@@ -239,7 +281,7 @@ namespace bl.Structures.AVLRB
                 hijoAct.fijarPadre(eliminar.devolverPadre());
                 eliminar.fijarHijoD(null);
                 eliminar.fijarHijoI(null);
-                arreglarInsercion(hijoAct);
+                arreglarInsercion(hijoAct);//Hacemos lo mismo que arriba
             }
             else if (eliminar.devolverHijoI()!=null && eliminar.devolverHijoD()!=null)
             {
