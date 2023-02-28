@@ -1,6 +1,9 @@
-﻿using dl;
+﻿
+using bl.Structures.AVLRB;
+using dl;
 
 var controller = new Controller();
+
 int option;
 
 do
@@ -10,7 +13,10 @@ do
     Console.WriteLine("2- Agregar elemento en arbol B");
     Console.WriteLine("3- Agregar elemento en arbol B+");
     Console.WriteLine("4- Agregar elemento en arbol Rojo-Negro");
-    Console.WriteLine("5- Salir");
+    Console.WriteLine("5- Eliminar elemento en arbol Rojo-Negro");
+    Console.WriteLine("6- Mostrar en arbol Rojo-Negro");
+
+    Console.WriteLine("7- Salir");
     option = Convert.ToInt32(Console.ReadLine());
 
     switch (option)
@@ -33,18 +39,29 @@ do
             break;
 
         case 4:
-            // Code Red-Black tree
+            int x;
+
+            Console.WriteLine("Ingrese el nodo para agregar");
+            x =int.Parse(Console.ReadLine());
+            controller.AddInARBl(x);//Funciones principales se hacen uso
             break;
 
         case 5:
-            Console.WriteLine("Adios");
+            Console.WriteLine("Ingrese el nodo para eliminar");
+            x = int.Parse(Console.ReadLine());
+            RedBlackNode y = controller.SearchInARBl(x);//Lo busca
+            controller.DeleteARBl(y);//Eliminar
+            break;
+        case 6:
+            Tree arbol = new Tree();
+            controller.RecorridoInAvl(arbol.devolverRaiz());
             break;
 
         default:
             Console.WriteLine("Opcion no valida");
             break;
     }
-} while (option != 5);
+} while (option != 7);
 
 static int ReadNumber()
 {
