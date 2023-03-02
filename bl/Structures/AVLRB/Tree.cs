@@ -83,7 +83,7 @@ namespace bl.Structures.AVLRB
         //Proporciona el arreglo de los nodos si estos rompieron una de las 4 reglas
         public void arreglarInsercion(RedBlackNode z)
         {
-            while (z.devolverPadre().devolverColor().Equals("Rojo"))// z sera el parametro de el nodo que se ingreso
+            while (z.devolverPadre().devolverColor().Equals("rojo"))// z sera el parametro de el nodo que se ingreso
             {
                 if (z.devolverPadre() == z.devolverPadre().devolverPadre().devolverHijoI())//aqui se comprueba si es el nodo que va para la izquierda
                 {
@@ -171,7 +171,7 @@ namespace bl.Structures.AVLRB
             }
             else
             {
-                if (z == z.devolverPadre().devolverPadre())// verificamos el segundo tipo de desajuste
+                if (z == z.devolverPadre().devolverHijoD())// verificamos el segundo tipo de desajuste
                 {
                     z = RotarIzqPadre(z); // se utiliza la funcion para rotar el padre
                 }
@@ -195,7 +195,7 @@ namespace bl.Structures.AVLRB
             }
             else
             {
-                if (z == z.devolverPadre().devolverPadre())// verificamos el segundo tipo de desajuste
+                if (z == z.devolverPadre().devolverHijoI())// verificamos el segundo tipo de desajuste
                 {
                     z = RotarDerPadre(z); // se utiliza la funcion para rotar el padre
                 }
@@ -256,7 +256,7 @@ namespace bl.Structures.AVLRB
 
             if (eliminar.devolverHijoD() == null && eliminar.devolverHijoI() == null)
             {
-                if (eliminar.devolverPadre().devolverHijoI() == null)
+                if (eliminar.devolverPadre().devolverHijoI() == eliminar)
                 {
                     eliminar.devolverPadre().fijarHijoI(null);
                 }
@@ -274,7 +274,7 @@ namespace bl.Structures.AVLRB
                 eliminar.fijarHijoI(null);
                 arreglarInsercion(hijoAct);// SI ES UN PADRE DE UNA HOJA
             }
-            else if (eliminar.devolverHijoI()!=null&&eliminar.devolverHijoD==null)
+            else if (eliminar.devolverHijoI()!=null&&eliminar.devolverHijoD()==null)
             {
                 RedBlackNode hijoAct = eliminar.devolverHijoI();
                 eliminar.devolverPadre().fijarHijoD(hijoAct);
@@ -297,25 +297,29 @@ namespace bl.Structures.AVLRB
                     eliminar.fijarLlave(hijoAct.devolverLlave());
                     Eliminar(hijoAct);
                 }
-            }
+            }Console.WriteLine("El nodo ha sido elimiando");
         }
-        public RedBlackNode buscar(int llave)
+        public RedBlackNode buscar(int llave) //FUNCION BUSCAR
         {
-            RedBlackNode current = raiz;
+            RedBlackNode cursor = devolverRaiz();
 
-            while (current != null && current.devolverLlave() != llave)
+           if(devolverRaiz() != null)
             {
-                if (llave < current.devolverLlave())
+                while (cursor.devolverLlave() != llave)
                 {
-                    current = current.devolverHijoI();
-                }
-                else
-                {
-                    current = current.devolverHijoD();
+                    if (llave < cursor.devolverLlave())
+                    {
+                        cursor=cursor.devolverHijoI();
+                    }
+                    else 
+                        cursor = cursor.devolverHijoI();
+                    if (cursor==null)
+                    {
+                        break;
+                    }
                 }
             }
-
-            return current;
+            return cursor;
         }
 
 

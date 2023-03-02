@@ -89,7 +89,7 @@ namespace bl.Structures.AVLRB
             {
                 hd=y.devolverHijoD().devolverLlave();   
             }
-            Console.WriteLine("({0},hijo Izquierdo{1},hijo Derecho{2},color{3})", devolverLlave().ToString(),hi.ToString(),hd.ToString(),devolverColor());
+            Console.WriteLine("({0},hijoI{1},hijoD{2},color{3})", devolverLlave().ToString(),hi.ToString(),hd.ToString(),devolverColor());
         }
     }
     
