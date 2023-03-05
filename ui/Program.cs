@@ -25,7 +25,10 @@ do
             break;
 
         case 2:
-            // Code B tree
+            controller.AddInBTree(ReadNumber());
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("Mostrando el arbol");
+            Console.WriteLine(controller.ShowBTree());
             break;
 
         case 3:
