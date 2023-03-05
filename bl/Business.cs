@@ -18,6 +18,11 @@ public class Business
         _avlTree.Add(value);
     }
 
+    public void DeleteInAvl(int value)
+    {
+        _avlTree.Delete(value);
+    }
+
     public string DrawAvl()
     {
         return _avlTree.Draw();

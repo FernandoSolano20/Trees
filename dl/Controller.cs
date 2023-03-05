@@ -1,4 +1,5 @@
 ﻿using bl;
+using bl.Structures.AVL;
 using bl.Structures.B;
 
 namespace dl;
@@ -18,6 +19,11 @@ public class Controller
     public string DrawAvl()
     {
         return _bl.DrawAvl();
+    }
+
+    public void DeleteInAvl(int value)
+    {
+        _bl.DeleteInAvl(value);
     }
 
 
