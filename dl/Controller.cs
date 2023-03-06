@@ -2,6 +2,7 @@
 using bl.Structures.AVL;
 using bl.Structures.RedBlack;
 using bl.Structures.B;
+using bl.Structures.BPlus;
 
 namespace dl;
 public class Controller
@@ -60,5 +61,20 @@ public class Controller
     public string DrawRedBlack()
     {
         return _bl.DrawRedBlack();
+    }
+
+    public void AddInBPlusTree(int value)
+    {
+        _bl.AddInBPlusTree(value);
+    }
+
+    public string DrawBPlusTree()
+    {
+        return _bl.DrawBPlusTree();
+    }
+
+    public string DeleteInBPlusTree(int value)
+    {
+        return _bl.DeleteInBPlusTree(value);
     }
 }
