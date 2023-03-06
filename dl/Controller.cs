@@ -1,5 +1,5 @@
 ﻿using bl;
-using bl.Structures.AVLRB;
+using bl.Structures.RedBlack;
 
 namespace dl;
 public class Controller
@@ -19,21 +19,17 @@ public class Controller
     {
         return _bl.DrawAvl();
     }
-    public void AddInARBl(int value)
+    public void AddInRedBlack(int value)
     {
-        _bl.AddInTreeRB(value);
+        _bl.AddInRedBlack(value);
     }
-    public void DeleteARBl(RedBlackNode value)
+    public void DeleteInRedBlack(int value)
     {
-        _bl.AddDeleteTreeRB(value);
-    }
-    public RedBlackNode SearchInARBl(int value)
-    {
-       return _bl.SearchInTreeRB(value);
-    }
-    public void RecorridoInAvl(RedBlackNode reco)
-    {
-        _bl.RecorridoInARB(reco);
+        _bl.DeleteInRedBlack(value);
     }
 
+    public string DrawRedBlack()
+    {
+        return _bl.DrawRedBlack();
+    }
 }

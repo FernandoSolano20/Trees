@@ -1,16 +1,16 @@
 ﻿using bl.Structures.AVL;
-using bl.Structures.AVLRB;
+using bl.Structures.RedBlack;
 
 namespace bl;
 public class Business
 {
     private AvlTree _avlTree;
-    private Tree Tree_tree;
+    private RedBlackTree _redBlackTree;
 
     public Business()
     {
         _avlTree = new AvlTree();
-        Tree_tree = new Tree();
+        _redBlackTree = new RedBlackTree();
     }
 
     public void AddInAvl(int value)
@@ -23,20 +23,17 @@ public class Business
         return _avlTree.Draw();
     }
 
-    public void AddInTreeRB(int value)
+    public void AddInRedBlack(int value)
     {
-        Tree_tree.Insertar(value);
+        _redBlackTree.Add(value);
     }
-    public void AddDeleteTreeRB(RedBlackNode delete)
+    public void DeleteInRedBlack(int value)
     {
-        Tree_tree.Eliminar(delete);
+        _redBlackTree.Delete(value);
     }
-    public RedBlackNode SearchInTreeRB(int value)
+
+    public string DrawRedBlack()
     {
-        return Tree_tree.buscar(value);
-    }
-    public void RecorridoInARB(RedBlackNode reco)
-    {
-        Tree_tree.Recorrido(reco);
+        return _redBlackTree.Draw();
     }
 }

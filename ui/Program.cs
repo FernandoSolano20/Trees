@@ -1,8 +1,21 @@
-﻿
-using bl.Structures.AVLRB;
-using dl;
+﻿using dl;
 
 var controller = new Controller();
+int[] arr = { 1, 4, 6, 3, 5, 7, 8, 2, 9 };
+for (int i = 0; i < arr.Length; i++)
+{
+    controller.AddInRedBlack(arr[i]);
+}
+
+Console.WriteLine("\n\n\n");
+Console.WriteLine(controller.DrawRedBlack());
+Console.WriteLine("\n\n\n");
+
+controller.DeleteInRedBlack(6);
+Console.WriteLine("\n\n\n");
+Console.WriteLine(controller.DrawRedBlack());
+Console.WriteLine("\n\n\n");
+
 
 int option;
 
@@ -42,20 +55,12 @@ do
             int x;
 
             Console.WriteLine("Ingrese el nodo para agregar");
-            x =int.Parse(Console.ReadLine());
-            controller.AddInARBl(x);//Funciones principales se hacen uso
+            controller.AddInRedBlack(ReadNumber());
             break;
 
         case 5:
             Console.WriteLine("Ingrese el nodo para eliminar");
-            x = int.Parse(Console.ReadLine());
-            RedBlackNode y = controller.SearchInARBl(x);//Lo busca
-            controller.DeleteARBl(y);//Eliminar
-            break;
-        case 6:
-            Tree arbol = new Tree();
-            controller.RecorridoInAvl(arbol.devolverRaiz());
-            Console.ReadKey();
+            controller.DeleteInRedBlack(ReadNumber());
             break;
 
         default:
