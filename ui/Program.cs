@@ -61,7 +61,12 @@ do
             break;
 
         case 6:
-            // Code B+ tree
+            Console.WriteLine("Ingrese el nodo para eliminar");
+            controller.RemoveInBPTree(tree, ReadNumber());
+            Console.WriteLine("Dibujando el arbol");
+            Console.WriteLine("\n\n\n");
+            controller.DrawBPTree(tree);
+            Console.WriteLine("\n\n\n");
             break;
 
         case 7:

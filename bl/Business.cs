@@ -9,14 +9,13 @@ public class Business
     private AvlTree _avlTree;
     private BTree _bTree;
     private RedBlackTree _redBlackTree;
-
+    
 
     public Business()
     {
         _avlTree = new AvlTree();
         _bTree = new BTree(3);
         _redBlackTree = new RedBlackTree();
-        var _bPtree = new BTreeDictionary<int, int>();
     }
 
     public void AddInAvl(int value)
@@ -83,5 +82,11 @@ public class Business
         {
             Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
         }
+    }
+
+    public BTreeDictionary<int, int> RemoveInBPTree(BTreeDictionary<int, int> tree, int item)
+    {
+        tree.Remove(item);
+        return tree;
     }
 }

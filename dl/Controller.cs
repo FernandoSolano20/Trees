@@ -73,4 +73,10 @@ public class Controller
         tree = _bl.AddInBPTree(tree, item);
         return tree;
     }
+
+    public BTreeDictionary<int, int> RemoveInBPTree(BTreeDictionary<int, int> tree, int item)
+    {
+        _bl.RemoveInBPTree(tree, item);
+        return tree;
+    }
 }
