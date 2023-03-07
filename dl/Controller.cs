@@ -2,6 +2,7 @@
 using bl.Structures.AVL;
 using bl.Structures.RedBlack;
 using bl.Structures.B;
+using bl.Structures.BPLusTree.BPTree;
 
 namespace dl;
 public class Controller
@@ -60,5 +61,16 @@ public class Controller
     public string DrawRedBlack()
     {
         return _bl.DrawRedBlack();
+    }
+
+    public void DrawBPTree(BTreeDictionary<int, int> tree)
+    {
+        _bl.DrawBPTree(tree);
+    }
+
+    public BTreeDictionary<int, int> AddInBPTree(BTreeDictionary<int, int> tree, int item)
+    {
+        tree = _bl.AddInBPTree(tree, item);
+        return tree;
     }
 }

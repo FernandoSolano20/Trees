@@ -1,7 +1,8 @@
-﻿using dl;
+﻿using bl.Structures.BPLusTree.BPTree;
+using dl;
 
 var controller = new Controller();
-
+var tree = new BTreeDictionary<int, int>();
 int option;
 
 do
@@ -53,7 +54,10 @@ do
             break;
 
         case 5:
-            // Code B+ tree
+            tree = controller.AddInBPTree(tree, ReadNumber());
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("Mostrando el arbol");
+            controller.DrawBPTree(tree);
             break;
 
         case 6:

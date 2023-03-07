@@ -1,5 +1,6 @@
 ﻿using bl.Structures.AVL;
 using bl.Structures.B;
+using bl.Structures.BPLusTree.BPTree;
 using bl.Structures.RedBlack;
 
 namespace bl;
@@ -9,11 +10,13 @@ public class Business
     private BTree _bTree;
     private RedBlackTree _redBlackTree;
 
+
     public Business()
     {
         _avlTree = new AvlTree();
         _bTree = new BTree(3);
         _redBlackTree = new RedBlackTree();
+        var _bPtree = new BTreeDictionary<int, int>();
     }
 
     public void AddInAvl(int value)
@@ -64,5 +67,21 @@ public class Business
     public string DrawRedBlack()
     {
         return _redBlackTree.Draw();
+    }
+
+    public BTreeDictionary<int, int> AddInBPTree(BTreeDictionary<int, int> tree, int item)
+    {
+
+        tree.Add(item, item);
+
+        return tree;
+    }
+
+    public void DrawBPTree(BTreeDictionary<int, int> tree)
+    {
+        foreach (var kvp in tree)
+        {
+            Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+        }
     }
 }
