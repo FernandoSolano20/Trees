@@ -41,14 +41,14 @@ do
             controller.AddInBTree(ReadNumber());
             Console.WriteLine("---------------------------------");
             Console.WriteLine("Mostrando el arbol");
-            Console.WriteLine(controller.ShowBTree());
+            Console.WriteLine(controller.DrawBTree());
             break;
 
         case 4:
             controller.DeleteInBTree(ReadNumber());
             Console.WriteLine("---------------------------------");
             Console.WriteLine("Mostrando el arbol");
-            Console.WriteLine(controller.ShowBTree());
+            Console.WriteLine(controller.DrawBTree());
             break;
 
         case 5:

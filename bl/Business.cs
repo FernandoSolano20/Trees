@@ -52,9 +52,9 @@ public class Business
         return _bTree.Search(value);
     }
 
-    public string ShowBTree()
+    public string DrawBTree()
     {
-        return _bTree.Traverse();
+        return _bTree.Draw();
     }
     
     public void AddInRedBlack(int value)

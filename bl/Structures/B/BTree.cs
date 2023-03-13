@@ -422,4 +422,43 @@ public class BTree
 
         return stringBuilder;
     }
+
+    public string Draw()
+    {
+        return Draw(root, new StringBuilder()).ToString();
+    }
+
+    private StringBuilder Draw(BNode current, StringBuilder stringBuilder)
+    {
+        if (current == null)
+            return stringBuilder;
+        Queue<BNode> q = new Queue<BNode>();
+        q.Enqueue(current);
+        while (q.Count != 0)
+        {
+            int l;
+            l = q.Count;
+
+            for (int i = 0; i < l; i++)
+            {
+                var tNode = q.Dequeue();
+
+                for (int j = 0; j < tNode.numKeys; j++)
+                    if (tNode != null)
+                        stringBuilder.Append(tNode.keys[j] + " ");
+
+                if (!tNode.isLeaf)
+                {
+                    for (int j = 0; j < tNode.children.Length; j++)
+                        if (tNode.children[j] != null)
+                            q.Enqueue(tNode.children[j]);
+                }
+
+                stringBuilder.Append("\t");
+            }
+            stringBuilder.Append("\n");
+        }
+
+        return stringBuilder;
+    }
 }

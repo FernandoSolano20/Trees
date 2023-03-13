@@ -44,9 +44,9 @@ public class Controller
         return _bl.SearchInBTree(value);
     }
 
-    public string ShowBTree()
+    public string DrawBTree()
     {
-        return _bl.ShowBTree();
+        return _bl.DrawBTree();
     }
     
     public void AddInRedBlack(int value)
