@@ -63,20 +63,18 @@ public class Controller
         return _bl.DrawRedBlack();
     }
 
-    public void DrawBPTree(BTreeDictionary<int, int> tree)
+    public string DrawBPTree()
     {
-        _bl.DrawBPTree(tree);
+        return _bl.DrawBPTree();
     }
 
-    public BTreeDictionary<int, int> AddInBPTree(BTreeDictionary<int, int> tree, int item)
+    public void AddInBPTree(int item)
     {
-        tree = _bl.AddInBPTree(tree, item);
-        return tree;
+        _bl.AddInBPTree(item);
     }
 
-    public BTreeDictionary<int, int> RemoveInBPTree(BTreeDictionary<int, int> tree, int item)
+    public void RemoveInBPTree(int item)
     {
-        _bl.RemoveInBPTree(tree, item);
-        return tree;
+        _bl.RemoveInBPTree(item);
     }
 }

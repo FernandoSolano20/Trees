@@ -1,4 +1,5 @@
-﻿using bl.Structures.AVL;
+﻿using System.Text;
+using bl.Structures.AVL;
 using bl.Structures.B;
 using bl.Structures.BPLusTree.BPTree;
 using bl.Structures.RedBlack;
@@ -9,13 +10,15 @@ public class Business
     private AvlTree _avlTree;
     private BTree _bTree;
     private RedBlackTree _redBlackTree;
-    
+    private BTreeDictionary<int, int> _bPlusTree;
+
 
     public Business()
     {
         _avlTree = new AvlTree();
         _bTree = new BTree(3);
         _redBlackTree = new RedBlackTree();
+        _bPlusTree = new BTreeDictionary<int, int>();
     }
 
     public void AddInAvl(int value)
@@ -68,25 +71,24 @@ public class Business
         return _redBlackTree.Draw();
     }
 
-    public BTreeDictionary<int, int> AddInBPTree(BTreeDictionary<int, int> tree, int item)
+    public void AddInBPTree(int item)
     {
-
-        tree.Add(item, item);
-
-        return tree;
+        _bPlusTree.Add(item, item);
     }
 
-    public void DrawBPTree(BTreeDictionary<int, int> tree)
+    public string DrawBPTree()
     {
-        foreach (var kvp in tree)
+        var stringBuilder = new StringBuilder();
+        foreach (var kvp in _bPlusTree)
         {
-            Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+            stringBuilder.Append($"Key = {kvp.Key}, Value = {kvp.Value}\n");
         }
+
+        return stringBuilder.ToString();
     }
 
-    public BTreeDictionary<int, int> RemoveInBPTree(BTreeDictionary<int, int> tree, int item)
+    public void RemoveInBPTree(int item)
     {
-        tree.Remove(item);
-        return tree;
+        _bPlusTree.Remove(item);
     }
 }

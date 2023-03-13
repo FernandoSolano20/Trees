@@ -1,8 +1,6 @@
-﻿using bl.Structures.BPLusTree.BPTree;
-using dl;
+﻿using dl;
 
 var controller = new Controller();
-var tree = new BTreeDictionary<int, int>();
 int option;
 
 do
@@ -54,18 +52,18 @@ do
             break;
 
         case 5:
-            tree = controller.AddInBPTree(tree, ReadNumber());
+            controller.AddInBPTree(ReadNumber());
             Console.WriteLine("---------------------------------");
             Console.WriteLine("Mostrando el arbol");
-            controller.DrawBPTree(tree);
+            Console.WriteLine(controller.DrawBPTree());
+            Console.WriteLine("\n\n\n");
             break;
 
         case 6:
             Console.WriteLine("Ingrese el nodo para eliminar");
-            controller.RemoveInBPTree(tree, ReadNumber());
-            Console.WriteLine("Dibujando el arbol");
-            Console.WriteLine("\n\n\n");
-            controller.DrawBPTree(tree);
+            controller.RemoveInBPTree(ReadNumber());
+            Console.WriteLine("Mostrando el arbol");
+            Console.WriteLine(controller.DrawBPTree());
             Console.WriteLine("\n\n\n");
             break;
 
